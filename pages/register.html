@@ -1,0 +1,97 @@
+<form id="registerForm" name="registerForm" novalidate >
+    <div class="row">
+        <div class="col-sm-2">
+            <label>First Name</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" value="" ng-required="true" name="firstname" ng-model="profile.firstname">
+            <span style="color:red;" ng-show="registerForm.firstname.$dirty && registerForm.firstname.$invalid">
+                <span ng-show="registerForm.firstname.$error.required">Firstname required</span>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Last Name</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" value="" ng-required="true" name="lastname" ng-model="profile.lastname">
+            <span style="color:red;" ng-show="registerForm.lastname.$dirty && registerForm.lastname.$invalid">
+                <span ng-show="registerForm.lastname.$error.required">Lastname required</span>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Email Address</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="email" value="" ng-required="true" name="email" ng-model="registration.email">
+            <span style="color:red;" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
+                <span ng-show="registerForm.email.$error.required">Invalid Email</span>
+                <span ng-show="registerForm.email.$error.email">Invalid Email address</span>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Create a Username</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" value="" ng-required="true" name="username" ng-model="profile.username">
+            <span style="color:red;" ng-show="registerForm.username.$dirty && registerForm.username.$invalid">
+                <span ng-show="registerForm.username.$error.required">Username required</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Create a Password<span> (minimum 6 characters)</span></label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" value="" data-ng-model='registration.password'  name="password" ng-minlength="8" ng-required="true">
+            <span style="color:red;" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
+                <span ng-show="registerForm.password.$error.required">Password length to short</span>
+                <span ng-show="registerForm.password.$error.minlength">Password length to short</span>
+            </span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Confirm Password<span> (minimum 6 characters)</span></label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" value="" name="password_confirmation" ng-model="registration.password_confirmation" ng-minlength="8" ng-required="true" data-password-verify="registration.password">
+            <span style="color:red;" ng-show="registerForm.password_confirmation.$dirty && registerForm.password_confirmation.$invalid">
+                <span ng-show="registerForm.password_confirmation.$error.required">Password length to short</span>
+                <span ng-show="registerForm.password_confirmation.$error.minlength">Password length to short</span>
+                <span ng-show="registerForm.password_confirmation.$error.passwordVerify">Password should match</span>
+            </span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-2">
+            <label>Phone Number</label>
+        </div>
+        <div class="col-sm-4">
+            <input type="text" maxlength="10" value=""  name="mobile" ng-model="profile.mobile" ng-minlength="10" ng-maxlength="10" ng-required="true">
+            <span style="color:red;" ng-show="registerForm.mobile.$dirty && registerForm.mobile.$invalid">
+                <span ng-show="registerForm.mobile.$error.required">Enter correct Number</span>
+                <span ng-show="registerForm.mobile.$error.minlength">Enter correct Number</span>
+                <span ng-show="registerForm.mobile.$error.maxlength">Enter correct Number</span>
+            </span>
+        </div>
+    </div>
+{{expense.profile}}
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="#/">Back</a>
+        </div>
+        <div class="col-sm-4">
+            <button ng-disabled="registerForm.$pristine || registerForm.$dirty && registerForm.$invalid" ng-click="submit()">Submit</button>
+        </div>
+    </div>
+</form>
